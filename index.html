@@ -380,6 +380,168 @@
     .reveal{opacity:1;transform:none}
     .img-reveal::after{display:none}
   }
+
+  /* ===== MOBILE PATCH FROM V14 : header logo + compact page heroes ===== */
+  @media(max-width:860px){
+    /* 첫 화면/탭 상단 배경 위에서는 로고가 보이도록 화이트 처리 */
+    header:not(.scrolled) .logo{
+      color:#fff !important;
+      text-shadow:0 2px 16px rgba(0,0,0,.28);
+    }
+    header.scrolled .logo{
+      color:var(--navy) !important;
+      text-shadow:none;
+    }
+    header:not(.scrolled) .menu-btn span{
+      background:#fff !important;
+    }
+    header.scrolled .menu-btn span{
+      background:var(--navy) !important;
+    }
+
+    /* About / Brands / Consulting / Team 탭 상단 히어로 영역 모바일 축소 */
+    .page-hero{
+      height:38svh !important;
+      min-height:300px !important;
+      max-height:360px !important;
+      align-items:flex-end !important;
+    }
+    .page-hero .ph-bg{
+      inset:0 !important;
+      height:100% !important;
+    }
+    .page-hero .ph-inner{
+      padding-bottom:34px !important;
+    }
+    .page-hero h1{
+      font-size:clamp(30px,8.7vw,42px) !important;
+      line-height:1.14 !important;
+      letter-spacing:-.035em !important;
+    }
+    .page-hero p{
+      margin-top:12px !important;
+      font-size:14px !important;
+      line-height:1.55 !important;
+      max-width:310px !important;
+    }
+    .page-hero .eyebrow{
+      margin-bottom:14px !important;
+      font-size:10px !important;
+      letter-spacing:.22em !important;
+    }
+
+    /* Brands 탭의 BRANDS 헤더도 과하게 길지 않게 별도 보정 */
+    #page-brand .page-hero{
+      height:34svh !important;
+      min-height:260px !important;
+      max-height:320px !important;
+      align-items:center !important;
+    }
+    #page-brand .page-hero .ph-inner{
+      padding-bottom:0 !important;
+    }
+    #page-brand .page-hero h1{
+      font-size:clamp(40px,13vw,58px) !important;
+      letter-spacing:.02em !important;
+    }
+    #page-brand .page-hero p{
+      max-width:300px !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+    }
+  }
+
+  @media(max-width:520px){
+    .page-hero{
+      height:34svh !important;
+      min-height:280px !important;
+      max-height:330px !important;
+    }
+    .page-hero .ph-inner{
+      padding-bottom:30px !important;
+    }
+    .page-hero h1{
+      font-size:clamp(29px,9.2vw,38px) !important;
+    }
+    #page-brand .page-hero{
+      height:30svh !important;
+      min-height:240px !important;
+      max-height:290px !important;
+    }
+  }
+
+
+  /* ===== MOBILE HERO TEXT TINY ADJUST ===== */
+  @media(max-width:860px){
+    .hero-slide h1{
+      font-size:clamp(32px,8.25vw,36px) !important;
+      line-height:1.18 !important;
+      word-break:keep-all !important;
+      overflow-wrap:normal !important;
+    }
+  }
+  @media(max-width:520px){
+    .hero-slide h1{
+      font-size:clamp(30px,8.05vw,34px) !important;
+      line-height:1.18 !important;
+    }
+  }
+
+
+
+  /* ===== V18 COPY / MOBILE VISUAL PATCH ===== */
+  h1,h2,h3,p,.lead,.body,.pv-body,.page-hero p,.bcard-txt p,.bv-tag{
+    word-break:keep-all;
+    overflow-wrap:break-word;
+  }
+  .rich-logo-panel{background:#071827;padding:0;overflow:hidden}
+  .rich-logo-video{width:100%;height:100%;object-fit:cover;display:block}
+  .consulting-video-wrap .preview-video{width:100%;height:100%;min-height:380px;object-fit:cover;display:block}
+
+  @media(max-width:860px){
+    .page-hero{background:#1e5f9f !important;overflow:hidden !important}
+    .page-hero .ph-bg{
+      inset:-18% 0 -18% 0 !important;
+      height:136% !important;
+      min-height:136% !important;
+    }
+    #page-brand .page-hero h1{
+      font-size:clamp(34px,10.8vw,48px) !important;
+      line-height:1.02 !important;
+      letter-spacing:.01em !important;
+    }
+    #page-brand .page-hero p{
+      width:100% !important;
+      max-width:370px !important;
+      font-size:clamp(13px,3.55vw,15px) !important;
+      line-height:1.55 !important;
+    }
+    .pv-body h2,.rich-intro h2,.cta-box h2,.page-hero h1{
+      word-break:keep-all !important;
+      overflow-wrap:break-word !important;
+    }
+    .pv-body p,.rich-intro p,.cta-box p{
+      word-break:keep-all !important;
+      overflow-wrap:break-word !important;
+      line-height:1.78 !important;
+    }
+    .rich-logo-video{min-height:360px}
+  }
+  @media(max-width:520px){
+    #page-brand .page-hero h1{
+      font-size:clamp(32px,10.4vw,44px) !important;
+    }
+    #page-brand .page-hero p{
+      max-width:340px !important;
+      font-size:13px !important;
+    }
+    .page-hero .ph-bg{
+      inset:-22% 0 -22% 0 !important;
+      height:144% !important;
+      min-height:144% !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -535,13 +697,12 @@
     <div class="wrap">
       <div class="preview reveal" style="direction:rtl">
         <div class="pv-img consulting-video-wrap">
-          <video class="preview-video" autoplay muted loop playsinline preload="metadata" src="https://ik.imagekit.io/suelle/bluewellhomepage/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB%20%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8%202026-07-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.57.34.mov"></video>
+          <video class="preview-video" autoplay muted loop playsinline preload="metadata" src="https://ik.imagekit.io/suelle/bluewellhomepage/richlogo.mp4"></video>
         </div>
         <div class="pv-body" style="direction:ltr">
           <p class="eyebrow">Consulting</p>
-          <h2>특허에서 시작하는<br>브랜드 컨설팅.</h2>
-          <p>Rich Marketing은 기술과 데이터를 바탕으로 브랜드의 메시지를 설계합니다.
-          분석부터 적용까지, 브랜드의 성장을 함께 만듭니다.</p>
+          <h2>브랜드를 더 강하게 만드는<br>특허 기반 컨설팅.</h2>
+          <p>Rich Marketing은 제품의 차별점을 특허와 데이터의 언어로 정리해, 브랜드가 더 신뢰받고 더 선명하게 선택될 수 있도록 설계합니다.</p>
           <a href="#" class="btn" data-page="consulting">컨설팅 보기 <span class="arr">→</span></a>
         </div>
       </div>
@@ -700,8 +861,8 @@
     <div class="ph-bg grad-blue" data-img="consulting-hero.jpg" data-parallax="0.22"></div>
     <div class="ph-inner wrap">
       <p class="eyebrow" style="color:#cfe2f5">Consulting</p>
-      <h1>브랜드를 완성하는<br>Rich Marketing</h1>
-      <p>특허와 데이터로 브랜드의 메시지를 설계합니다.</p>
+      <h1>브랜드를 더 강하게 만드는<br>Rich Marketing</h1>
+      <p>특허와 데이터로 브랜드의 차별점을 설계합니다.</p>
     </div>
   </section>
 
@@ -709,28 +870,11 @@
     <div class="wrap rich-intro">
       <div class="reveal">
         <p class="eyebrow">Rich Marketing</p>
-        <h2>기술을 브랜드의<br>언어로 번역합니다</h2>
-        <p>Rich Marketing은 특허 출원과 기술 데이터를 기반으로, 광고 규제 안에서도 브랜드의 강점을 정직하게 전달하는 컨설팅을 제공합니다. 고객사의 브랜드가 신뢰를 쌓을 수 있도록, 전략의 처음부터 끝까지 함께합니다.</p>
+        <h2>제품의 차이를,<br>브랜드의 힘으로 바꿉니다</h2>
+        <p>Rich Marketing은 특허 출원과 기술 데이터를 기반으로, 제품이 가진 강점을 소비자가 이해할 수 있는 브랜드 메시지로 설계합니다. 표현의 한계 안에서도 더 신뢰받고, 더 선명하게 선택되는 브랜드를 만듭니다.</p>
       </div>
-      <div class="reveal d1 rich-img rm-frame-panel">
-        <div class="bw-rm-frame-slider" aria-label="Rich Marketing 이미지 자동 슬라이드">
-          <div class="bw-rm-frame-track">
-            <div class="bw-rm-frame-group">
-              <div class="bw-rm-frame-card"><img src="https://ik.imagekit.io/suelle/rich/rich1.jpeg" alt="Rich Marketing 슬라이드 이미지 1" loading="lazy" decoding="async"></div>
-              <div class="bw-rm-frame-card"><img src="https://ik.imagekit.io/suelle/rich/rich2.jpeg" alt="Rich Marketing 슬라이드 이미지 2" loading="lazy" decoding="async"></div>
-              <div class="bw-rm-frame-card"><img src="https://ik.imagekit.io/suelle/rich/rich3.jpeg" alt="Rich Marketing 슬라이드 이미지 3" loading="lazy" decoding="async"></div>
-              <div class="bw-rm-frame-card"><img src="https://ik.imagekit.io/suelle/rich/rich4.jpeg" alt="Rich Marketing 슬라이드 이미지 4" loading="lazy" decoding="async"></div>
-              <div class="bw-rm-frame-card"><img src="https://ik.imagekit.io/suelle/rich/rich5.jpeg" alt="Rich Marketing 슬라이드 이미지 5" loading="lazy" decoding="async"></div>
-            </div>
-            <div class="bw-rm-frame-group" aria-hidden="true">
-              <div class="bw-rm-frame-card"><img src="https://ik.imagekit.io/suelle/rich/rich1.jpeg" alt="" loading="lazy" decoding="async"></div>
-              <div class="bw-rm-frame-card"><img src="https://ik.imagekit.io/suelle/rich/rich2.jpeg" alt="" loading="lazy" decoding="async"></div>
-              <div class="bw-rm-frame-card"><img src="https://ik.imagekit.io/suelle/rich/rich3.jpeg" alt="" loading="lazy" decoding="async"></div>
-              <div class="bw-rm-frame-card"><img src="https://ik.imagekit.io/suelle/rich/rich4.jpeg" alt="" loading="lazy" decoding="async"></div>
-              <div class="bw-rm-frame-card"><img src="https://ik.imagekit.io/suelle/rich/rich5.jpeg" alt="" loading="lazy" decoding="async"></div>
-            </div>
-          </div>
-        </div>
+      <div class="reveal d1 rich-img rm-frame-panel rich-logo-panel">
+        <video class="rich-logo-video" autoplay muted loop playsinline preload="metadata" src="https://ik.imagekit.io/suelle/bluewellhomepage/richlogo.mp4"></video>
       </div>
     </div>
   </section>
@@ -749,8 +893,8 @@
   <section class="section cta" style="padding-top:0">
     <div class="wrap">
       <div class="cta-box reveal">
-        <h2>브랜드의 다음 단계를<br>함께 설계하시겠어요?</h2>
-        <p>BLUEWELL과 Rich Marketing이 브랜드의 성장을 함께 연구합니다.</p>
+        <h2>브랜드를 더 강하게 만들<br>다음 전략을 설계하시겠어요?</h2>
+        <p>BLUEWELL과 Rich Marketing이 브랜드의 차별화, 신뢰, 성장을 함께 연구합니다.</p>
         <a href="https://richmarketing.kr" target="_blank" rel="noopener" class="cta-btn">컨설팅 문의하기 →</a>
       </div>
     </div>
